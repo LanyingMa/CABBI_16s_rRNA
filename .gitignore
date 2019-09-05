@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+### R.Bookdown Stack ###
+# R package: bookdown caching files
+/*_files/
+
+# Mac Files
+*.DS_Store
