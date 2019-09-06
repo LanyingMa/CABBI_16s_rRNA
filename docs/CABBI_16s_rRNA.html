@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>CABBI_16s_rRNA</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li>
+  <a href="CABBI_16s_rRNA.html">CABBI Amplicon sequencing analysis</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">CABBI_16s_rRNA</h1>
+
+</div>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>we have had analyzed the 16s rDNA sequencing to study how the planting years of Miscanthus and N fertilization rates affect the bacterial microbial community in associated soil, which you could find in <a href="https://lanyingma.github.io/CABBI_16s_microbialCommunity/">CABBI_16s_rDNA</a>. We have also extracted RNA from the same-sampled soils, preserved by LifeGuard. Based on the previous studies and my analysis with 16s rDNA NGS sequencing, we hypothesized that planting years of Miscanthus and N fertilization rates will be the largest variances to drive the active microbial community too. Meanwhile, we are aiming to find:</p>
+<ul>
+<li>What is the difference between whole bacterial community (16s rDNA NGS sequncing) and active bacterial community (16s rRNA NGS sequncing)?</li>
+<li>alpha diversity</li>
+<li>beta diversity
+<ul>
+<li>To investigate which variance affects the microibal community the most</li>
+<li>To study how these variances affect the microibal community structure</li>
+</ul></li>
+<li>Which species are significantly enriched in whole or active community?</li>
+<li>Are these significantly enriched species in whole or active community correlated with 16s rDNA(rRNA), planting year of Miscanthus or N fertilization?</li>
+</ul>
+<p>Loading libraries</p>
+<pre class="r"><code>library(phyloseq)
+library(phylosmith)
+library(dada2)
+library(plyr)
+library(ggplot2)
+library(vegan)
+library(reshape2)
+library(ggpubr)
+library(DESeq2)
+library(biomformat)
+library(openxlsx)</code></pre>
+<p>Generate phyloseq objects from the OTU table and taxonomy table generated from DADA2, 16s rRNA data.</p>
+<pre class="r"><code>otu_rrna_16s &lt;- readRDS(&quot;data/seq_table.RDS&quot;)
+tax_rrna_16s &lt;- readRDS(&quot;data/tax_table.RDS&quot;)
+metadata &lt;- read.csv(file=&quot;data/metadata_cabbi_rrna_16s.csv&quot;)
+colnames(otu_rrna_16s) &lt;- metadata$Samples
+phylo.rrna &lt;- phyloseq(otu_table(otu_rrna_16s, taxa_are_rows=TRUE), tax_table(tax_rrna_16s))
+
+rownames(metadata) &lt;- metadata$Sample
+sample_data(phylo.rrna) &lt;- metadata
+phylo.rrna</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 39353 taxa and 481 samples ]
+## sample_data() Sample Data:       [ 481 samples by 10 sample variables ]
+## tax_table()   Taxonomy Table:    [ 39353 taxa by 6 taxonomic ranks ]</code></pre>
+<pre class="r"><code>head(sample_data(phylo.rrna))</code></pre>
+<pre><code>##                                                                           Samples
+## 2001_C_2018_N300_P3_A_20180429_RNA_CABBI 2001_C_2018_N300_P3_A_20180429_RNA_CABBI
+## 2002_C_2018_N300_P3_B_20180429_RNA_CABBI 2002_C_2018_N300_P3_B_20180429_RNA_CABBI
+## 2003_C_2018_N300_P3_C_20180429_RNA_CABBI 2003_C_2018_N300_P3_C_20180429_RNA_CABBI
+## 2004_C_2018_N0_P4_A_20180429_RNA_CABBI     2004_C_2018_N0_P4_A_20180429_RNA_CABBI
+## 2005_C_2018_N0_P4_B_20180429_RNA_CABBI     2005_C_2018_N0_P4_B_20180429_RNA_CABBI
+## 2006_C_2018_N0_P4_C_20180429_RNA_CABBI     2006_C_2018_N0_P4_C_20180429_RNA_CABBI
+##                                          Plant Year Plot Nitrogen Days
+## 2001_C_2018_N300_P3_A_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2002_C_2018_N300_P3_B_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2003_C_2018_N300_P3_C_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2004_C_2018_N0_P4_A_20180429_RNA_CABBI    Corn 2018    4        0  -10
+## 2005_C_2018_N0_P4_B_20180429_RNA_CABBI    Corn 2018    4        0  -10
+## 2006_C_2018_N0_P4_C_20180429_RNA_CABBI    Corn 2018    4        0  -10
+##                                                Soil fertilizer
+## 2001_C_2018_N300_P3_A_20180429_RNA_CABBI Rizosphere         no
+## 2002_C_2018_N300_P3_B_20180429_RNA_CABBI Rizosphere         no
+## 2003_C_2018_N300_P3_C_20180429_RNA_CABBI Rizosphere         no
+## 2004_C_2018_N0_P4_A_20180429_RNA_CABBI   Rizosphere         no
+## 2005_C_2018_N0_P4_B_20180429_RNA_CABBI   Rizosphere         no
+## 2006_C_2018_N0_P4_C_20180429_RNA_CABBI   Rizosphere         no
+##                                                  Type Nucelic
+## 2001_C_2018_N300_P3_A_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2002_C_2018_N300_P3_B_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2003_C_2018_N300_P3_C_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2004_C_2018_N0_P4_A_20180429_RNA_CABBI     2018_0_-10     RNA
+## 2005_C_2018_N0_P4_B_20180429_RNA_CABBI     2018_0_-10     RNA
+## 2006_C_2018_N0_P4_C_20180429_RNA_CABBI     2018_0_-10     RNA</code></pre>
+<p>Also Read the otu table and taxonomy table of 16s rDNA from the same samples by DADA2</p>
+<pre class="r"><code>otu_cabbi &lt;- readRDS(&quot;data/seq_table_16srDNA.RDS&quot;)
+tax_cabbi &lt;- readRDS(&quot;data/tax_table_16srDNA.RDS&quot;)
+ps &lt;- phyloseq(otu_table(otu_cabbi, taxa_are_rows=TRUE), tax_table(tax_cabbi))
+metadata.rdna&lt;-read.csv(file=&quot;data/meatadata_cabbi_rDNA_481.csv&quot;)
+rownames(metadata.rdna)&lt;- metadata.rdna$Samples
+sample_data(ps)&lt;- metadata.rdna
+ps</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 56045 taxa and 481 samples ]
+## sample_data() Sample Data:       [ 481 samples by 11 sample variables ]
+## tax_table()   Taxonomy Table:    [ 56045 taxa by 6 taxonomic ranks ]</code></pre>
+<pre class="r"><code>head(sample_data(ps))</code></pre>
+<pre><code>##                                                                   Samples
+## 2001_C_2018_P3_N300_A_20180429_CABBI 2001_C_2018_P3_N300_A_20180429_CABBI
+## 2002_C_2018_P3_N300_B_20180429_CABBI 2002_C_2018_P3_N300_B_20180429_CABBI
+## 2003_C_2018_P3_N300_C_20180429_CABBI 2003_C_2018_P3_N300_C_20180429_CABBI
+## 2004_C_2018_P4_N0_A_20180429_CABBI     2004_C_2018_P4_N0_A_20180429_CABBI
+## 2005_C_2018_P4_N0_B_20180429_CABBI     2005_C_2018_P4_N0_B_20180429_CABBI
+## 2006_C_2018_P4_N0_C_20180429_CABBI     2006_C_2018_P4_N0_C_20180429_CABBI
+##                                      Plant Year Plot Nitrogen Days
+## 2001_C_2018_P3_N300_A_20180429_CABBI  Corn 2018    3      300  -10
+## 2002_C_2018_P3_N300_B_20180429_CABBI  Corn 2018    3      300  -10
+## 2003_C_2018_P3_N300_C_20180429_CABBI  Corn 2018    3      300  -10
+## 2004_C_2018_P4_N0_A_20180429_CABBI    Corn 2018    4        0  -10
+## 2005_C_2018_P4_N0_B_20180429_CABBI    Corn 2018    4        0  -10
+## 2006_C_2018_P4_N0_C_20180429_CABBI    Corn 2018    4        0  -10
+##                                            Soil fertilizer         Type
+## 2001_C_2018_P3_N300_A_20180429_CABBI Rizosphere         no 2018_300_-10
+## 2002_C_2018_P3_N300_B_20180429_CABBI Rizosphere         no 2018_300_-10
+## 2003_C_2018_P3_N300_C_20180429_CABBI Rizosphere         no 2018_300_-10
+## 2004_C_2018_P4_N0_A_20180429_CABBI   Rizosphere         no   2018_0_-10
+## 2005_C_2018_P4_N0_B_20180429_CABBI   Rizosphere         no   2018_0_-10
+## 2006_C_2018_P4_N0_C_20180429_CABBI   Rizosphere         no   2018_0_-10
+##                                      Comparing Nucelic
+## 2001_C_2018_P3_N300_A_20180429_CABBI         3     DNA
+## 2002_C_2018_P3_N300_B_20180429_CABBI         3     DNA
+## 2003_C_2018_P3_N300_C_20180429_CABBI         3     DNA
+## 2004_C_2018_P4_N0_A_20180429_CABBI           3     DNA
+## 2005_C_2018_P4_N0_B_20180429_CABBI           3     DNA
+## 2006_C_2018_P4_N0_C_20180429_CABBI           3     DNA</code></pre>
+<p>As you could see for the name of samples in DNA and RNA, the N#_P# are swapted. so i will make the order of these names are the same To swapt the name order in 16s rRNA sequencing</p>
+<pre class="r"><code>sample_names_s &lt;- vector()
+for(name in rownames(metadata)){
+  begin &lt;- strsplit(name, &#39;_&#39;)[[1]][1:3]
+  end &lt;- strsplit(name, &#39;_&#39;)[[1]][6:9]
+  check &lt;- strsplit(name, &#39;_&#39;)[[1]][4:5]
+  if(strsplit(check[1], &#39;&#39;)[[1]][1] == &#39;N&#39;){
+    check &lt;- check[c(2,1)]
+  }
+  sample &lt;- paste(c(begin, check, end), sep = &#39;_&#39;, collapse = &#39;_&#39;)
+  sample_names_s &lt;- rbind(sample_names_s, sample)
+}
+sample_names(phylo.rrna) &lt;- sample_names_s
+head(sample_data(phylo.rrna))</code></pre>
+<pre><code>##                                                                           Samples
+## 2001_C_2018_P3_N300_A_20180429_RNA_CABBI 2001_C_2018_N300_P3_A_20180429_RNA_CABBI
+## 2002_C_2018_P3_N300_B_20180429_RNA_CABBI 2002_C_2018_N300_P3_B_20180429_RNA_CABBI
+## 2003_C_2018_P3_N300_C_20180429_RNA_CABBI 2003_C_2018_N300_P3_C_20180429_RNA_CABBI
+## 2004_C_2018_P4_N0_A_20180429_RNA_CABBI     2004_C_2018_N0_P4_A_20180429_RNA_CABBI
+## 2005_C_2018_P4_N0_B_20180429_RNA_CABBI     2005_C_2018_N0_P4_B_20180429_RNA_CABBI
+## 2006_C_2018_P4_N0_C_20180429_RNA_CABBI     2006_C_2018_N0_P4_C_20180429_RNA_CABBI
+##                                          Plant Year Plot Nitrogen Days
+## 2001_C_2018_P3_N300_A_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2002_C_2018_P3_N300_B_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2003_C_2018_P3_N300_C_20180429_RNA_CABBI  Corn 2018    3      300  -10
+## 2004_C_2018_P4_N0_A_20180429_RNA_CABBI    Corn 2018    4        0  -10
+## 2005_C_2018_P4_N0_B_20180429_RNA_CABBI    Corn 2018    4        0  -10
+## 2006_C_2018_P4_N0_C_20180429_RNA_CABBI    Corn 2018    4        0  -10
+##                                                Soil fertilizer
+## 2001_C_2018_P3_N300_A_20180429_RNA_CABBI Rizosphere         no
+## 2002_C_2018_P3_N300_B_20180429_RNA_CABBI Rizosphere         no
+## 2003_C_2018_P3_N300_C_20180429_RNA_CABBI Rizosphere         no
+## 2004_C_2018_P4_N0_A_20180429_RNA_CABBI   Rizosphere         no
+## 2005_C_2018_P4_N0_B_20180429_RNA_CABBI   Rizosphere         no
+## 2006_C_2018_P4_N0_C_20180429_RNA_CABBI   Rizosphere         no
+##                                                  Type Nucelic
+## 2001_C_2018_P3_N300_A_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2002_C_2018_P3_N300_B_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2003_C_2018_P3_N300_C_20180429_RNA_CABBI 2018_300_-10     RNA
+## 2004_C_2018_P4_N0_A_20180429_RNA_CABBI     2018_0_-10     RNA
+## 2005_C_2018_P4_N0_B_20180429_RNA_CABBI     2018_0_-10     RNA
+## 2006_C_2018_P4_N0_C_20180429_RNA_CABBI     2018_0_-10     RNA</code></pre>
+<p>Now the order of names in 16s rRNA and names in 16s rDNA are the same.</p>
+<p>First check the heatmap of phylo.rrna</p>
+<pre class="r"><code>heatmap.rrna &lt;- phylosmith::abundance_heatmap(phylo.rrna, classification = &#39;Phylum&#39;, treatment = c(&#39;Year&#39;),  transformation = &#39;log10&#39;, colors = &#39;default&#39;)</code></pre>
+</div>
+<div id="investigating-the-differences-between-whole-community-and-active-community" class="section level2">
+<h2>Investigating the differences between whole community and active community</h2>
+<p>Combine the two phyloseq objects together</p>
+<pre class="r"><code>merged.phylo &lt;- merge_phyloseq(phylo.rrna, ps)
+
+merged.phylo.1 &lt;- prune_species(speciesSums(merged.phylo)&gt;1, merged.phylo)
+saveRDS(merged.phylo.1, file=&quot;data/merged_DNA_RNA_phyloseq.rds&quot;)
+merged.phylo.1 &lt;-readRDS(file=&quot;data/merged_DNA_RNA_phyloseq.rds&quot;)
+merged.phylo.1</code></pre>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 63153 taxa and 962 samples ]
+## sample_data() Sample Data:       [ 962 samples by 11 sample variables ]
+## tax_table()   Taxonomy Table:    [ 63153 taxa by 6 taxonomic ranks ]</code></pre>
+</div>
+<div id="alpha-diversity" class="section level2">
+<h2>Alpha diversity</h2>
+<pre class="r"><code>richness &lt;- estimate_richness(merged.phylo.1, measures=c(&quot;Observed&quot;, &quot;InvSimpson&quot;, &quot;Shannon&quot;, &quot;Chao1&quot;))
+sam &lt;- sample_data(merged.phylo.1)
+sa &lt;- data.frame(rownames(sam), sam$Year, sam$Nitrogen, sam$Days, sam$Nucelic)
+
+rownames(richness) = gsub(pattern=&quot;X*&quot;, replacement=&quot;&quot;, x=rownames(richness))
+merged &lt;- merge(richness, sa, by.x= &quot;row.names&quot;, by.y=&quot;rownames.sam.&quot;)
+merged.melt &lt;- melt(merged, id.vars=c(&quot;Row.names&quot;,&quot;sam.Nucelic&quot;), measure.vars=c(&quot;Chao1&quot;,&quot;Shannon&quot;,&quot;InvSimpson&quot;))
+alpha.merged &lt;- ggplot(merged.melt, aes(x=sam.Nucelic,y=value))+geom_boxplot()+facet_grid(~variable)+
+  theme(axis.text.x = element_text(angle = 90, size=14),
+        axis.text.y = element_text(size=14),
+        axis.title.y = element_text(angle=90),
+        panel.background=element_rect(fill=&quot;white&quot;, colour=&quot;white&quot;),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size=14),
+        legend.title=element_text(size=16),
+        axis.line = element_line(colour = &quot;black&quot;, size = 1, linetype = &quot;solid&quot;),
+        strip.background = element_rect(colour = &quot;black&quot;, fill = &quot;white&quot;,size=2, linetype=&quot;solid&quot;),
+        strip.text=element_text(size=14))+
+  xlab(&quot;&quot;)
+compa &lt;- list(c(&quot;RNA&quot;,&quot;DNA&quot;))
+alpha.merged.pvalue&lt;- alpha.merged +stat_compare_means(comparisons = compa, label=&quot;p.signif&quot;, method=&quot;t.test&quot;)#+ #add pairwise comparisons p-value
+  #stat_compare_means(label.y=4, method = &quot;anova&quot;) 
+ggsave(alpha.merged.pvalue, file=&quot;figures/alpha_diversity_merged_two_phylo.pdf&quot;, units=&quot;in&quot;, width=6, height=6)
+alpha.merged.pvalue</code></pre>
+<p><img src="CABBI_16s_rRNA_files/figure-html/unnamed-chunk-77-1.png" width="672" /> The alpha diversity is significanlty higher associated with 16s rDNA sequencing, which makes sense, indicating the whole community has more species than the active communities.</p>
+<p>So, what are different? Let me take a look of the first 10 most abundant phyla associated with rDNA /rRNA Rarefying</p>
+<pre class="r"><code>set.seed(100)
+merged.phylo.1.rare &lt;- rarefy_even_depth(merged.phylo.1, sample.size=5000, rngseed=TRUE)</code></pre>
+<pre><code>## `set.seed(TRUE)` was used to initialize repeatable random subsampling.</code></pre>
+<pre><code>## Please record this for your records so others can reproduce.</code></pre>
+<pre><code>## Try `set.seed(TRUE); .Random.seed` for the full vector</code></pre>
+<pre><code>## ...</code></pre>
+<pre><code>## 72 samples removedbecause they contained fewer reads than `sample.size`.</code></pre>
+<pre><code>## Up to first five removed samples are:</code></pre>
+<pre><code>## 2004_C_2018_P4_N0_A_20180429_RNA_CABBI2010_C_2018_P6_N300_A_20180429_RNA_CABBI2025_C_2018_P14_N0_A_20180429_RNA_CABBI2058_M_2016_P18_N200_A_20180429_RNA_CABBI2062_M_2016_P19_N0_B_20180429_RNA_CABBI    </code></pre>
+<pre><code>## ...</code></pre>
+<pre><code>## 5968OTUs were removed because they are no longer 
+## present in any sample after random subsampling</code></pre>
+<pre><code>## ...</code></pre>
+<pre class="r"><code># removed 72 samples.</code></pre>
+<pre class="r"><code>merged.relative &lt;- transform_sample_counts(merged.phylo.1.rare, function(x) x/sum(x))
+merged.relative.glom &lt;- tax_glom(merged.relative, taxrank=&quot;Phylum&quot;) 
+Top10phylum.merged.glom = names(sort(taxa_sums(merged.relative.glom), decreasing=T))[1:10]
+Top10phylum.merged.phylo &lt;- prune_taxa(Top10phylum.merged.glom,merged.relative.glom)</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

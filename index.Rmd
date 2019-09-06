@@ -1,0 +1,7 @@
+---
+title: "CABBI 16s rDNA Amplicon sequencing analysis"
+---
+
+A place for all of my github practice files.
+
+* [RMarkdown](https://github.com/LanyingMa/CABBI_16s_microbialCommunity)
