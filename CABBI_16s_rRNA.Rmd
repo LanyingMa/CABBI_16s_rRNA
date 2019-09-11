@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
 ## Introduction
-we have had analyzed the 16s rDNA sequencing to study how the planting years of Miscanthus and N fertilization rates affect the bacterial microbial community in associated soil, which you could find in [CABBI_16s_rDNA](https://lanyingma.github.io/CABBI_16s_microbialCommunity/).  We have also extracted RNA from the same-sampled soils, preserved by LifeGuard. Based on the previous studies and my analysis with 16s rDNA NGS sequencing, we hypothesized that planting years of Miscanthus and N fertilization rates will be the largest variances to drive the active microbial community too. Meanwhile, we are aiming to find:
+we have had analyzed the 16s rDNA sequencing to study how the planting years of Miscanthus and N fertilization rates affect the bacterial microbial community in associated soil, which you could find in [CABBI_16s_rDNA](https://lanyingma.github.io/CABBI_16s_rDNA/).  We have also extracted RNA from the same-sampled soils, preserved by LifeGuard. Based on the previous studies and my analysis with 16s rDNA NGS sequencing, we hypothesized that planting years of Miscanthus and N fertilization rates will be the largest variances to drive the active microbial community too. Meanwhile, we are aiming to find:
 
 * What is the difference between whole bacterial community (16s rDNA NGS sequncing) and active bacterial community (16s rRNA NGS sequncing)?
   + alpha diversity
